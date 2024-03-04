@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre8'
+ 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'mysql:mysql-connector-java:8.0.26'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'io.netty:netty-all:4.1.68.Final'
+    implementation 'io.netty.incubator:netty-incubator-codec-http3:0.0.22.Final'
+	implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+	implementation 'com.auth0:java-jwt:3.18.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
